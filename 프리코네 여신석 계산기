@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+// 일단 간단하게
+int main() {
+	while (1) {
+		int goddness_stone = 0, piece, cost, cnt = 0;
+		printf("필요한 메모리 피스의 개수를 입력하시오   : ");
+		scanf("%d", &piece);
+		while (1) {
+			printf("현재 메모리 피스의 구매가격을 입력하시오 : ");
+			scanf("%d", &cost);
+			if (cost < 1 || 5 < cost) {
+				printf("잘못 입력하셧습니다 다시 입력해주세요.\n");
+				continue;
+			}
+			break;
+		}
+		if (cost < 5) {
+			while (1) {
+				printf("현재 메모리 피스의 구매개수를 입력하시요 : ");
+				scanf("%d", &cnt);
+				if (cnt < 0 || 20 <= cnt) {
+					//printf("%d\n", cnt);
+					printf("잘못 입력하셧습니다 다시 입력해주세요.\n");
+					continue;
+				}
+				break;
+			}
+		}
+		int weigh = cost; // 구매 비용
+		for (int i = 1; i <= piece; i++, cnt++) {
+			if (cnt % 20 == 0 && weigh < 5 && i != 1) {
+				cnt = 0;
+				weigh++;
+				//printf("++\n");
+			}
+			goddness_stone += weigh;
+			//printf("%d\n", goddness_stone);
+		}
+		printf("필요한 여신석 개수 : %d개\n", goddness_stone);
+		printf("종료 Ctrl + c\n\n");
+	}
+	return 0;
+}
